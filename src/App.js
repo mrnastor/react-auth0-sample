@@ -1,9 +1,11 @@
 import './App.css';
 
 import React, { Component } from "react";
+import {Route} from "react-router-dom";
 import TvShows from "./components/TvShows.js";
 import Movies from "./components/Movies.js";
-import auth from "./auth/service";
+import auth from "./auth";
+import AuthCallback from "./auth/AuthCallback";
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ class App extends Component {
             Log In
           </button>
         )}
+        <Route exact path='/callback' component={AuthCallback}/>
       </div>
     );
   }

@@ -56,6 +56,19 @@ class Auth {
     return localStorage.getItem(this.authFlag) === "true";
   }
 
+  handleAuthentication() {
+    return new Promise((resolve, reject) => {
+      this.auth0.parseHash((err, authResult) => {
+        if (err) return reject(err);
+        if (!authResult || !authResult.idToken) {
+          return reject(err);
+        }
+        this.localLogin(authResult);
+        resolve();
+      });
+    })
+  }
+
   logout() {
     this.localLogout();
     this.auth0.logout({

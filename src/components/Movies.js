@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import TvShows from "./TvShows";
-import auth from "../auth/service";
+import auth from "../auth";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
